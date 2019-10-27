@@ -1,0 +1,65 @@
+#include <iostream>
+
+using namespace std;
+
+int static DIM = 4;
+
+int main()
+{
+    int arr[DIM][DIM] = {{5, 4, 3, 2}, {3, 10, 11, 1}, {1, 12, 10, 0}, {0, 3, 2, 1}};
+    
+    //edges will have n-1 columns and n rows, so this matrix will be 3x4
+    int edge[DIM-1][DIM] = {};
+    
+    //calculate edges
+    //loop through rows
+    for(int i=0; i<DIM; i++){
+        
+        //loop through cols
+        for(int j=0; j<DIM; j++){
+            
+            //if corner vectors then skip
+            if(i==0 && j==0 || i==(DIM-1) && j==(DIM-1) || i==0 && j==(DIM-1) || i==(DIM-1) && j==0){
+                //do nothing
+            }
+            
+            //if first row, then do not calculate i-1
+            else if(i == 0){
+                
+                //calculate edge to the left
+                if(j > 0){
+                    edge[i][j-1] = abs(arr[i][j] - arr[i][j-1]);
+                }
+                
+                //calculate edge to the right
+                if(j < (DIM-1)){
+                    edge[i][j+1] = abs(arr[i][j] - arr[i][j+1]);
+                }
+                
+                //calculate edge down
+                edge[i+1][j] = abs(arr[i][j] - arr[i+1][j]);
+            }
+            
+            //if first col, then do not calculate j-1
+            else if(j == 0){
+                
+                //calculate edge up
+                
+                //calculate edge down
+                
+                //calculate edge right
+                
+            }
+            
+            //if last row, then do not calculate i+1
+            
+            //if last col, then do not calculate j+1
+            
+            //else it is a middle vertex, so calculate all directions edges
+            
+        }
+        
+    }
+
+    return 0;
+}
